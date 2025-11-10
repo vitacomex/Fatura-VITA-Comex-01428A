@@ -30,8 +30,8 @@
       resize: none;
     }
     button {
-      background: #007bff;   /* azul */
-      color: #fff;           /* texto branco */
+      background: #28a745;   /* verde */
+      color: #fff;
       border: none;
       padding: 12px 20px;
       font-size: 16px;
@@ -41,40 +41,33 @@
       transition: background 0.2s;
     }
     button:hover {
-      background: #0056b3;   /* azul mais escuro no hover */
+      background: #218838;
+    }
+    #mensagem {
+      color: #d9534f;
+      font-weight: bold;
+      margin-top: 15px;
     }
   </style>
 </head>
 <body>
 
-  <h1>Pagamento via Pix</h1>
   <h1>Fatura VITA Comex 01428A</h1>
 
   <div class="pix-box">
-    <p>Copie o código abaixo e cole no seu app bancário para pagar:</p>
+    <p>Esta fatura já foi paga.</p>
     <textarea id="pixCode" readonly>
-00020101021226850014br.gov.bcb.pix2563qrcodepix.bb.com.br/pix/v2/570331f0-abbb-48ca-b6ed-7d9dde348ef45204000053039865406982.485802BR5925VITA SERVICOS DE COMERCIO6009SAO PAULO62070503***6304396B
 
     </textarea>
-    <button onclick="copiarPix()">Copiar código Pix</button>
-    <p id="mensagem" style="color:green; font-weight:bold; display:none;">
-      Código copiado!
+    <button onclick="mostrarMensagem()">Ver status do pagamento</button>
+    <p id="mensagem" style="display:none;">
+      Pagamento efetuado em <strong>31/10/2025</strong>.
     </p>
   </div>
 
   <script>
-    function copiarPix() {
-      const texto = document.getElementById("pixCode");
-      texto.select();
-      texto.setSelectionRange(0, 99999); // Para dispositivos móveis
-      navigator.clipboard.writeText(texto.value).then(() => {
-        document.getElementById("mensagem").style.display = "block";
-        setTimeout(() => {
-          document.getElementById("mensagem").style.display = "none";
-        }, 2000);
-      }).catch(() => {
-        alert("Não foi possível copiar automaticamente. Copie manualmente.");
-      });
+    function mostrarMensagem() {
+      document.getElementById("mensagem").style.display = "block";
     }
   </script>
 
